@@ -1,0 +1,19 @@
+### Send POST request with json body for login
+POST https://contactapp-telran-backend.herokuapp.com/v1/user/login/usernamepassword
+Content-Type: application/json
+
+{
+  "username": "noa@gmail.com",
+  "password": "Nnoa12345$"
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+client.test("Headers option exists", function() {
+  client.assert(response.body.hasOwnProperty("token"), "Cannot find 'token' option in response");
+});
+
+%}
+
